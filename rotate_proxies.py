@@ -2,6 +2,8 @@ import queue
 import threading
 import requests
 
+# Initialize the number ot threads
+num_threads = 50
 # Initialize a queue to hold the proxies
 q = queue.Queue()
 # List to store valid HTTP proxies
@@ -32,7 +34,7 @@ def check_proxies():
 
 # Start multiple threads to speed up the proxy validation process
 threads = []
-for _ in range(5):
+for _ in range(num_threads):
     thread = threading.Thread(target=check_proxies)
     thread.start()
     threads.append(thread)
